@@ -25,7 +25,7 @@ OPTIONS:
 ### Command format
 
 ```
-> go run main.go createTFR --inDir <absolute path="" of="" the="" input="" directory="">--outDir <absolute path="" of="" the="" output="" directory="">--batchSize</absolute></absolute>
+> go run main.go createTFR --inDir <absolute path of the input directory>--outDir <absolute path of the output directory>--batchSize</absolute></absolute>
 ```
 
 ### Sample Result

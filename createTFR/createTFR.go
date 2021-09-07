@@ -66,6 +66,7 @@ func Create(inDir, outDir string, maxBatchSize int) error {
 		log.Println(err)
 		return err
 	}
+	defer w.Close()
 
 	fmt.Println("Start processing.....")
 
