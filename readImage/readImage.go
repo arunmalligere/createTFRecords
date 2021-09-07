@@ -1,11 +1,8 @@
 package readImage
 
 import (
-	"bytes"
 	"errors"
 	"fmt"
-	"image"
-	"image/jpeg"
 	"io"
 	"log"
 	"os"
@@ -61,23 +58,15 @@ func Read(inFile, outDir string, numOfRecs int) error {
 				imgByte = v.GetBytesList().Value[0]
 			}
 		}
-
-		img, _, err := image.Decode(bytes.NewReader(imgByte))
-		if err != nil {
-			log.Fatalln(err)
-		}
-
+		
 		out, _ := os.Create(outFile)
 		defer out.Close()
-
-		var opts jpeg.Options
-		opts.Quality = 1
-
-		err = jpeg.Encode(out, img, &opts)
-		if err != nil {
-			log.Println(err)
+		
+		_, errWrite := out.Write(imgByte)
+		if errWrite != nil {
+			log.Print(err)
 		}
-
+		
 		fmt.Println(outFile)
 
 		records++
